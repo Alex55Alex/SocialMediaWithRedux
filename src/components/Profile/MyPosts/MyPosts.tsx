@@ -1,19 +1,24 @@
 import React from "react";
 import s from './MyPosts.module.css';
-import Post from "./Post/Posts";
-const MyPosts: () => JSX.Element = () => {
-  return (
-    <div>
-      <p>My posts</p>
-      <textarea></textarea>
-      <button>send</button>
-      <button>remove</button>
-      <Post />
-      <Post />
-      <Post />
-    </div>
+import Post from "./Post/Post";
 
-  )
+
+const MyPosts: (props: any) => JSX.Element = (props) => {
+    return (
+        <div className={s.postsBlock}>
+            <h2>My posts</h2>
+            <textarea></textarea>
+            <div>
+                <button>send</button>
+            </div>
+            {
+                props.postData.map((post : any) => {
+                    return <Post message={post.message} id={post.id} likeCount={post.likeCount}/>
+                })
+            }
+        </div>
+
+    )
 }
 
 export default MyPosts;
