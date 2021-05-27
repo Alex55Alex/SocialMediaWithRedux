@@ -9,8 +9,16 @@ text-decoration: none;
 .dialogsItems .active{
     color: gold;
 }
-.dialog {
+.dialog a {
     padding: 10px;
+    display: flex;
+    align-items: center;
+
+}
+.dialog img {
+    width: 30px;
+    border-radius: 50%;
+    padding-right: 6px;
 }
 
 

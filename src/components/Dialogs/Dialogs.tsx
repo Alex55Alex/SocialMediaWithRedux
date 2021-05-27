@@ -9,7 +9,7 @@ const Dialogs: (props: any) => JSX.Element = (props) => {
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
                 {
-                    props.dialogsData.map((dialogData: any) => {
+                    props.state.dialogsData.map((dialogData: any) => {
                         return <DialogItem name={dialogData.name} id={dialogData.id}/>
                     })
                 }
@@ -17,7 +17,7 @@ const Dialogs: (props: any) => JSX.Element = (props) => {
             </div>
             <div className={s.messages}>
                 {
-                    props.messageData.map((messageItem: any) => {
+                    props.state.messageData.map((messageItem: any) => {
                         return <Message message={messageItem.message} id={messageItem.id}/>
                     })
                 }

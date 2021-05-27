@@ -8,6 +8,8 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import News from './components/News/News';
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
+import state from "./redux/state";
+import SideBar from "./components/SideBar/SideBar";
 
 const App: (props: any) => JSX.Element = (props) => {
     return (
@@ -17,11 +19,13 @@ const App: (props: any) => JSX.Element = (props) => {
                 <Nav/>
                 <div className='app-wrapper-content'>
                     <Route path='/dialogs'
-                           render={() => <Dialogs dialogsData={props.dialogsData} messageData={props.messageData}/>}/>
-                    <Route path='/profile' component={() => <Profile postData={props.postData}/>}/>
+                           render={() => <Dialogs state={state.dialogsPage}/>}/>
+                    <Route path='/profile'
+                           render={() => <Profile state={state.profilePage}/>}/>
                     <Route path='/news' component={News}/>
                     <Route path='/music' component={Music}/>
                     <Route path='/settings' component={Settings}/>
+                    <Route path='/sideBar' render={() => <SideBar state ={state.sideBarInfo}/>}/>
                 </div>
             </div>
         </BrowserRouter>
