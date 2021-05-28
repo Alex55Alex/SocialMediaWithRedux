@@ -8,7 +8,6 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import News from './components/News/News';
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
-import state from "./redux/state";
 import SideBar from "./components/SideBar/SideBar";
 
 const App: (props: any) => JSX.Element = (props) => {
@@ -16,16 +15,16 @@ const App: (props: any) => JSX.Element = (props) => {
         <BrowserRouter>
             <div className='app-wrapper'>
                 <Header/>
-                <Nav/>
+                <Nav state={props.state}/>
                 <div className='app-wrapper-content'>
                     <Route path='/dialogs'
-                           render={() => <Dialogs state={state.dialogsPage}/>}/>
+                           render={() => <Dialogs state={props.state.dialogsPage}/>}/>
                     <Route path='/profile'
-                           render={() => <Profile state={state.profilePage}/>}/>
+                           render={() => <Profile state={props.state.profilePage} addPost={props.addPost}/>}/>
                     <Route path='/news' component={News}/>
                     <Route path='/music' component={Music}/>
                     <Route path='/settings' component={Settings}/>
-                    <Route path='/sideBar' render={() => <SideBar state ={state.sideBarInfo}/>}/>
+                    <Route path='/sideBar' render={() => <SideBar/>}/>
                 </div>
             </div>
         </BrowserRouter>

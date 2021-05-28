@@ -2,9 +2,9 @@ import React from 'react';
 import s from './Nav.module.css';
 import {NavLink} from 'react-router-dom'
 import SideBar from "../SideBar/SideBar";
-import state from "../../redux/state";
 
-const Nav: () => JSX.Element = () => {
+
+const Nav: (props: any) => JSX.Element = (props) => {
     return (
         <nav className={s.nav}>
             <div className={s.item}>
@@ -23,7 +23,7 @@ const Nav: () => JSX.Element = () => {
                 <NavLink to="/settings" activeClassName={s.active}>Settings</NavLink>
             </div>
             <div className={s.item}>
-                <NavLink to="/sideBar" activeClassName={s.active}><SideBar state ={state.sideBarInfo}/></NavLink>
+                <NavLink to="/sideBar" activeClassName={s.active}><SideBar state = {props.state.sideBarInfo.sideBarFriends}/></NavLink>
             </div>
         </nav>
     )

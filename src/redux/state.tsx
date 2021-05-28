@@ -45,4 +45,10 @@ const state: any = {
         ]
     }
 }
-export default state;
+let addPost: (post: any) => void = (postText) => {
+    let post: any = {message: postText, id: "3", likeCount: 8}
+    state.profilePage.postData.push(post);
+    console.log(state.profilePage.postData)
+}
+
+export {state, addPost};

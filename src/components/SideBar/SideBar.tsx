@@ -8,7 +8,7 @@ const SideBar: (props: any) => JSX.Element = (props) => {
             <h3>Friends</h3>
             <div className={s.friends}>
                 {
-                    props.state.sideBarFriends.map((friend: any) => {
+                    props.state.map((friend: any) => {
                         return (
                             <SideBarFriend name={friend.name} avatar={friend.avatar}/>
                         )
