@@ -8,7 +8,7 @@ let Profile: (props: any) => JSX.Element = (props) => {
     return (
         <div>
             <ProfileInfo/>
-            <MyPosts postData={props.state.postData} addPost={props.addPost}/>
+            <MyPosts state={props.state} addPost={props.addPost} addPostText={props.addPostText}/>
         </div>
     )
 }

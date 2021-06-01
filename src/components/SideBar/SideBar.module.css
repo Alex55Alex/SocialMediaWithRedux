@@ -1,8 +1,8 @@
-.friendsSection h3{
+.friendsSection h3 {
     padding: 9px;
     color: white;
 }
 
-.friends{
+.friends {
     display: flex;
 }

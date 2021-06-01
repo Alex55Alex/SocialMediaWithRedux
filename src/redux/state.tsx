@@ -1,3 +1,5 @@
+import {rerenderEtireTree} from "../render";
+
 const state: any = {
     dialogsPage: {
         dialogsData: [
@@ -21,7 +23,8 @@ const state: any = {
             {message: 'I like burgers', id: '1', likeCount: 3},
             {message: 'Do you like me?', id: '2', likeCount: 7},
 
-        ]
+        ],
+        postText: ''
     },
     sideBarInfo: {
         sideBarFriends: [
@@ -45,10 +48,15 @@ const state: any = {
         ]
     }
 }
+
 let addPost: (post: any) => void = (postText) => {
     let post: any = {message: postText, id: "3", likeCount: 8}
     state.profilePage.postData.push(post);
-    console.log(state.profilePage.postData)
+    rerenderEtireTree(state);
+}
+let addPostText:(postText: any) => void = (postText) => {
+    state.profilePage.postText = postText;
+    rerenderEtireTree(state);
 }
 
-export {state, addPost};
+export {state, addPost, addPostText};
