@@ -1,16 +1,18 @@
 import React from "react";
 import s from './MyPosts.module.css';
 import Post from "./Post/Post";
+import {addPostActionCreator, addPostTextActionCreator} from "../../../redux/state";
 
 let postElement: any = React.createRef();
+
+
 const MyPosts: (props: any) => JSX.Element = (props) => {
 
     const addPost: () => void = () => {
-        props.addPost(postElement.current.value);
-        props.addPostText('');
+        props.dispatch(addPostActionCreator());
     }
     const addPostText: () => void = () => {
-        props.addPostText(postElement.current.value);
+        props.dispatch(addPostTextActionCreator(postElement.current.value));
 
     }
 

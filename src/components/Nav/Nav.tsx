@@ -23,7 +23,7 @@ const Nav: (props: any) => JSX.Element = (props) => {
                 <NavLink to="/settings" activeClassName={s.active}>Settings</NavLink>
             </div>
             <div className={s.item}>
-                <NavLink to="/sideBar" activeClassName={s.active}><SideBar state = {props.state.sideBarInfo.sideBarFriends}/></NavLink>
+                <NavLink to="/sideBar" activeClassName={s.active}><SideBar state={props.state.sideBarInfo}/></NavLink>
             </div>
         </nav>
     )
