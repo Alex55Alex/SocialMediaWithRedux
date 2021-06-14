@@ -2,9 +2,17 @@ import React from 'react';
 import DialogItem from './DialogItem/DialogItem';
 import s from './Dialogs.module.css';
 import Message from "./Message/Message";
-
+import {addMessageTextActionCreator, addMessageActionCreator} from '../../redux/dialog-reducer';
 
 const Dialogs: (props: any) => JSX.Element = (props) => {
+    const addMessageText = (event:any) => {
+        let action = addMessageTextActionCreator(event.target.value);
+        props.dispatch(action);
+    };
+    const addMessage = () =>{
+    let action = addMessageActionCreator();
+    props.dispatch(action)
+    }
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
@@ -23,6 +31,8 @@ const Dialogs: (props: any) => JSX.Element = (props) => {
                 }
 
             </div>
+            <textarea  onChange={(event:any) => addMessageText(event)} value={props.state.messageText}/>
+            <button onClick={addMessage}>send</button>
         </div>
     )
 }

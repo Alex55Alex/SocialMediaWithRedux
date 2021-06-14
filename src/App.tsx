@@ -20,7 +20,7 @@ const App: (props: any) => JSX.Element = (props) => {
                 <Nav state={props.state}/>
                 <div className='app-wrapper-content'>
                     <Route path='/dialogs'
-                           render={() => <Dialogs state={props.state.dialogsPage}/>}/>
+                           render={() => <Dialogs state={props.state.dialogsPage} dispatch = {props.dispatch}/>}/>
                     <Route path='/profile'
                            render={() => <Profile state={props.state.profilePage} dispatch = {props.dispatch}/>}/>
                     <Route path='/news' component={News}/>

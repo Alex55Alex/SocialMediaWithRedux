@@ -1,5 +1,8 @@
-const ADD_POST = "ADD-POST";
-const ADD_POST_TEXT = "ADD-POST-TEXT";
+import profileReducer from "./profile-reducer";
+import dialogsReducer from "./dialog-reducer";
+import sidebarReducer from "./sidebar-reducer";
+
+
 
 const store = {
     _state: {
@@ -17,7 +20,8 @@ const store = {
                 {id: '0', message: "How are you?)"},
                 {id: '1', message: "Hi"},
                 {id: '2', message: "I am very tired"}
-            ]
+            ],
+            messageText: ''
         },
         profilePage: {
             postData: [
@@ -55,33 +59,17 @@ const store = {
     },
     _callSubscriber() {
     },
-    // addPost(postText: any) {
-    //     let post: any = {message: postText, id: "3", likeCount: 8}
-    //     this._state.profilePage.postData.push(post);
-    //     this._callSubscriber();
-    // },
-    // addPostText(postText: any) {
-    //     this._state.profilePage.postText = postText;
-    //     this._callSubscriber();
-    // },
     subscribe(observer: () => any) {
         this._callSubscriber = observer;
     },
     dispatch(action: any){
-        if(action.type === "ADD-POST"){
-            let post: any = {message: this._state.profilePage.postText, id: "3", likeCount: 8}
-            this._state.profilePage.postData.push(post);
-            this._state.profilePage.postText = '';
-            this._callSubscriber();
-        } else if(action.type === "ADD-POST-TEXT"){
-            this._state.profilePage.postText = action.postText;
-            this._callSubscriber();
-        }
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._state.sideBarInfo = sidebarReducer(this._state.sideBarInfo, action);
+        this._callSubscriber();
     }
 }
 
-export const addPostActionCreator: any = () => ({type: ADD_POST});
-export const addPostTextActionCreator: any = (text:string) => ({type: ADD_POST_TEXT, postText: text});
 
 
 export {store};
